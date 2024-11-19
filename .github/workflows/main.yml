@@ -62,7 +62,7 @@ jobs:
           scp -o StrictHostKeyChecking=no -i private_key -r /home/runner/work/pythonec2/* ${USER_NAME}@${HOSTNAME}:/home/ubuntu/python
           # SSH into EC2 and perform the deployment steps
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-            cd /home/ubuntu/pythonec2/
+            cd /home/ubuntu/python/pythonec2/
             pip3 -m venv myenvv
             source myenvv/bin/activate
             pip3 install -r requirements.txt
