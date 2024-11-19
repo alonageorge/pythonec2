@@ -63,7 +63,7 @@ jobs:
           # SSH into EC2 and perform the deployment steps
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd /home/ubuntu/python/pythonec2/
-            pip3 -m venv myenvv
+            python3 -m venv myenvv
             source myenvv/bin/activate
             pip3 install -r requirements.txt
             uvicorn main:app --host 127.0.0.1 --port 8000
