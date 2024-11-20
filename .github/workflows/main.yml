@@ -66,6 +66,13 @@ jobs:
             python3 -m venv myenvv
             source myenvv/bin/activate
             pip3 install -r requirements.txt
+            PID=$(lsof -t -i :8000)
+            if [ -n "$PID" ]; then
+              echo "Killing process with PID $PID"
+              kill -9 $PID
+            else
+              echo "No process found on port 8000"
+            fi
             uvicorn main:app --host 127.0.0.1 --port 8000
             
             '
