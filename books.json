@@ -17,12 +17,7 @@
     "price": 10.0,
     "book_id": "f4b7f7f488334155831a9656ba373530"
   },
-  {
-    "name": "Atomic Habits",
-    "genre": "non-fiction",
-    "price": 30.0,
-    "book_id": "6e72714965f94d0c9600277bb7e5ba99"
-  },
+
   {
     "name": "A Wild Sheep Chase",
     "genre": "fiction",
