@@ -58,12 +58,14 @@ jobs:
         run: |
           # Save the private SSH 
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          
-          #scp -o StrictHostKeyChecking=no -i private_key -r /home/runner/work/pythonec2/* ${USER_NAME}@${HOSTNAME}:/home/ubuntu/python
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+            sudo rm -rf /home/ubuntu/python/pythonec2/
+            '
+          scp -o StrictHostKeyChecking=no -i private_key -r /home/runner/work/pythonec2/* ${USER_NAME}@${HOSTNAME}:/home/ubuntu/python
           # SSH into EC2 and perform the deployment steps
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             sudo rm -rf /home/ubuntu/python/pythonec2/
-            scp -o StrictHostKeyChecking=no -i private_key -r /home/runner/work/pythonec2/* ${USER_NAME}@${HOSTNAME}:/home/ubuntu/python
+            
             cd /home/ubuntu/python/pythonec2/
             python3 -m venv myenvv
             source myenvv/bin/activate
