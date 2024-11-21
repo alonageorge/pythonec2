@@ -58,7 +58,7 @@ jobs:
         run: |
           # Save the private SSH 
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          #sudo scp -o StrictHostKeyChecking=no -i private_key -r /home/runner/work/pythonec2/* ${USER_NAME}@${HOSTNAME}:/home/ubuntu/python
+          sudo scp -o StrictHostKeyChecking=no -i private_key -r /home/runner/work/pythonec2/* ${USER_NAME}@${HOSTNAME}:/home/ubuntu/python
           # SSH into EC2 and perform the deployment steps
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             
